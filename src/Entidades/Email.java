@@ -15,14 +15,14 @@ import javax.persistence.Table;
  * @author eduar
  */
 @Entity
-@Table(name = "Autores")
+@Table(name = "Email")
 public class Email {
     
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     
-    @Column(name = "email", length = 100, nullable = false)
+    @Column(name = "email", length = 100)
     private String email;
     
     @ManyToOne(fetch = FetchType.LAZY)

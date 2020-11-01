@@ -10,7 +10,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(Autores.class)
 public abstract class Autores_ {
 
-	public static volatile SetAttribute<Autores, Livros> livro;
+	public static volatile SetAttribute<Autores, Livros> Livros;
 	public static volatile SingularAttribute<Autores, String> nome;
 	public static volatile SingularAttribute<Autores, Integer> id;
 	public static volatile ListAttribute<Autores, Email> email;

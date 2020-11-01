@@ -34,12 +34,19 @@ public class Livros {
     @Column(name = "titulo", length = 100, nullable = false)
     private String titulo;
     
-    @ManyToMany(mappedBy = "Autores")
-    private Set<Autores> Autor = new HashSet<>();
+    @ManyToMany(mappedBy = "Livros")
+    public Set<Autores> Autor = new HashSet<>();
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn (name = "IDFK_EDITORA")
     public Editora editora;
+    
+    @Override
+    public boolean equals(Object o){
+        if (this == o) return true;
+        if (!(o instanceof Livros)) return false;
+        return id != null && id.equals(((Editora)o).getId());
+    }
 
 
     public Integer getId() {

@@ -1,5 +1,6 @@
 package Entidades;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -20,10 +21,9 @@ import javax.persistence.Table;
 public class Editora {
     
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
     
-    @Column(name = "edicao", length = 100, nullable = false)
+    @Column(name = "nome", length = 100, nullable = false)
     private String nome;
     
     @OneToMany(
@@ -31,7 +31,7 @@ public class Editora {
     orphanRemoval = true   
     )
     @JoinColumn(name = "IDFK_EDITORA")
-    public List<Livros> livro;
+    public List<Livros> livro = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -47,5 +47,10 @@ public class Editora {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+    
+    public void AddLivro(Livros livro) {
+        this.livro.add(livro);
+        livro.editora = null;
     }
 }

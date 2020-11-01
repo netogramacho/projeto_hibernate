@@ -6,6 +6,7 @@
 package IEntidadesDAO;
 
 import Entidades.Editora;
+import Entidades.Livros;
 
 /**
  *

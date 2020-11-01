@@ -29,7 +29,9 @@ public class LivrosDAO implements ILivrosDAO{
 
     @Override
     public void SalvarAutor(Livros livro) {
+        
         this.getEntityManagerFactory();
+        this.em = emf.createEntityManager();
         em.getTransaction().begin();
         try{
             em.persist(livro);
@@ -39,6 +41,8 @@ public class LivrosDAO implements ILivrosDAO{
         }catch(Exception e){
             System.out.println(e.getMessage());
             em.getTransaction().rollback();
-        }  
+        } 
+        em.close();
+        emf.close();
     }          
 }

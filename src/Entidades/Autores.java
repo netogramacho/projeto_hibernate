@@ -34,14 +34,13 @@ public class Autores {
     
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
-            name = "Autor_Filme",
+            name = "Autor_Livro",
             joinColumns = {@JoinColumn (name = "IDFK_AUTOR")},
             inverseJoinColumns = {@JoinColumn(name = "IDFK_LIVRO")}              
             )
-    public Set<Livros> livro = new HashSet<>();
+    public Set<Livros> Livros = new HashSet<>();
     
     @OneToMany(
-    mappedBy = "Autores",
     cascade = CascadeType.ALL,
     orphanRemoval = true
     )

@@ -6,6 +6,7 @@
 package EntidadesDAO;
 
 import Entidades.Editora;
+import Entidades.Livros;
 import IEntidadesDAO.IEditoraDAO;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -30,6 +31,7 @@ public class EditoraDAO implements IEditoraDAO{
     @Override
     public void SalvarEditora(Editora editora) {
         this.getEntityManagerFactory();
+        this.em = emf.createEntityManager();
         em.getTransaction().begin();
         try{
             em.persist(editora);
@@ -39,7 +41,9 @@ public class EditoraDAO implements IEditoraDAO{
         }catch(Exception e){
             System.out.println(e.getMessage());
             em.getTransaction().rollback();
-        } 
+        }
+        em.close();
+        emf.close();
     }
     
 }
